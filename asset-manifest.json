@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/notto/static/css/main.2ae47eeb.chunk.css",
-    "main.js": "/notto/static/js/main.544c782f.chunk.js",
-    "main.js.map": "/notto/static/js/main.544c782f.chunk.js.map",
+    "main.js": "/notto/static/js/main.f83e13f2.chunk.js",
+    "main.js.map": "/notto/static/js/main.f83e13f2.chunk.js.map",
     "runtime-main.js": "/notto/static/js/runtime-main.93e6774f.js",
     "runtime-main.js.map": "/notto/static/js/runtime-main.93e6774f.js.map",
     "static/css/2.20aa2d7b.chunk.css": "/notto/static/css/2.20aa2d7b.chunk.css",
@@ -20,6 +20,6 @@
     "static/css/2.20aa2d7b.chunk.css",
     "static/js/2.74145ab6.chunk.js",
     "static/css/main.2ae47eeb.chunk.css",
-    "static/js/main.544c782f.chunk.js"
+    "static/js/main.f83e13f2.chunk.js"
   ]
 }
