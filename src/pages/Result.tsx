@@ -1,4 +1,6 @@
-import { useState } from 'react'
+import { faDice, faLaughBeam, faLink } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React, { useState } from 'react'
 import { Button, Card, Container, Table } from 'react-bootstrap'
 import { useParams } from 'react-router-dom'
 
@@ -12,6 +14,7 @@ const parseTicket = (value: string) => {
       +line.slice(4, 6),
       +line.slice(6, 8),
       +line.slice(8, 10),
+      +line.slice(10, 12),
     ]
   })
   return {
@@ -103,24 +106,41 @@ export const Result: React.FC = () => {
 
   return (
     <Container className='p-2'>
-      <Card className='text-center m-1'>
-        <Card.Title className='mt-3'>제{ticket?.round}회</Card.Title>
+      <Card className='text-center'>
+        <Card.Header className='font-weight-bold'>
+          제{ticket?.round}회
+        </Card.Header>
         <Card.Body>
           <Ticket numbers={ticket?.numbers} />
         </Card.Body>
         <Card.Footer>
-          <Button variant='primary' onClick={generateNumbers}>
-            No!tto
+          <Button variant='primary' onMouseDown={generateNumbers}>
+            <FontAwesomeIcon icon={faDice} className='text mr-1' />
+            notto!
           </Button>
-          <Button className='ml-1' variant='primary' onClick={copyToClipboard}>
-            Copy to clipboard
+          <Button
+            className='ml-2'
+            variant='primary'
+            onMouseDown={copyToClipboard}
+          >
+            <FontAwesomeIcon icon={faLink} className='text-3xl mr-2' />
+            Copy Link
           </Button>
         </Card.Footer>
       </Card>
-      <Card className='text-center m-1'>
-        <Card.Header>Numbers of week</Card.Header>
+      <Card className='text-center mt-2'>
+        <Card.Header>
+          <FontAwesomeIcon icon={faLaughBeam} className='text-3xl mr-2' />
+          Numbers of week
+        </Card.Header>
         <Card.Body>
-          <Ticket numbers={generated} />
+          {generated.length > 0 ? (
+            <Ticket numbers={generated} />
+          ) : (
+            <span>
+              Press <i>notto!</i> button.
+            </span>
+          )}
         </Card.Body>
       </Card>
     </Container>

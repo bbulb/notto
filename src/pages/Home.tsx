@@ -1,7 +1,9 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Button, Card, Container } from 'react-bootstrap'
 import QrReader from 'react-qr-reader'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faQrcode, faSync } from '@fortawesome/free-solid-svg-icons'
 
 export const Home: React.FC = () => {
   const [facing, setFacing] = useState<'environment' | 'user' | undefined>(
@@ -30,10 +32,14 @@ export const Home: React.FC = () => {
   return (
     <Container className='p-3'>
       <Card className='text-center'>
-        <Card.Header>QR Code</Card.Header>
+        <Card.Header>
+          {' '}
+          <FontAwesomeIcon icon={faQrcode} className='text-3xl mr-2' />
+          QR Code
+        </Card.Header>
         <Card.Body>
           <QrReader
-            delay={500}
+            delay={300}
             onScan={handleScan}
             onError={handleError}
             facingMode={facing}
@@ -41,6 +47,7 @@ export const Home: React.FC = () => {
         </Card.Body>
         <Card.Footer>
           <Button variant='primary' onClick={changeCamera}>
+            <FontAwesomeIcon icon={faSync} className='text-3xl mr-2' />
             Change Camera
           </Button>
         </Card.Footer>
