@@ -1,11 +1,19 @@
-import { faDice, faLaughBeam, faLink } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
-import { Button, Card, Container, Table } from 'react-bootstrap'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faDice, faLaughBeam, faLink } from '@fortawesome/free-solid-svg-icons'
 import { useParams } from 'react-router-dom'
+import {
+  Button,
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
+  Container,
+  Table,
+} from 'reactstrap'
 
 const parseTicket = (value: string) => {
-  const splited = value.split('q')
+  const splited = value.split(/[a-z]/)
   const round = splited.shift()
   const numbers = splited.map((line) => {
     return [
@@ -107,33 +115,33 @@ export const Result: React.FC = () => {
   return (
     <Container className='p-2'>
       <Card className='text-center'>
-        <Card.Header className='font-weight-bold'>
+        <CardHeader className='font-weight-bold'>
           제{ticket?.round}회
-        </Card.Header>
-        <Card.Body>
+        </CardHeader>
+        <CardBody>
           <Ticket numbers={ticket?.numbers} />
-        </Card.Body>
-        <Card.Footer>
-          <Button variant='primary' onMouseDown={generateNumbers}>
+        </CardBody>
+        <CardFooter>
+          <Button color='primary' onMouseDown={generateNumbers}>
             <FontAwesomeIcon icon={faDice} className='text mr-1' />
             notto!
           </Button>
           <Button
             className='ml-2'
-            variant='primary'
+            color='primary'
             onMouseDown={copyToClipboard}
           >
             <FontAwesomeIcon icon={faLink} className='text-3xl mr-2' />
             Copy Link
           </Button>
-        </Card.Footer>
+        </CardFooter>
       </Card>
       <Card className='text-center mt-2'>
-        <Card.Header>
+        <CardHeader>
           <FontAwesomeIcon icon={faLaughBeam} className='text-3xl mr-2' />
           Numbers of week
-        </Card.Header>
-        <Card.Body>
+        </CardHeader>
+        <CardBody>
           {generated.length > 0 ? (
             <Ticket numbers={generated} />
           ) : (
@@ -141,7 +149,7 @@ export const Result: React.FC = () => {
               Press <i>notto!</i> button.
             </span>
           )}
-        </Card.Body>
+        </CardBody>
       </Card>
     </Container>
   )
